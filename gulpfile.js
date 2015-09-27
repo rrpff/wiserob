@@ -14,6 +14,10 @@ var config = {
     src: ['app/index.js', 'app/**/*.{js,jsx}', '!app/{client,client/**}'],
     dest: 'dist/',
   },
+  testScripts: {
+    src: ['test/**/*.{js,jsx}'],
+    dest: 'dist/test/'
+  },
 };
 
 gulp.task('default', Object.keys(config));
@@ -30,11 +34,16 @@ gulp.task('clientScripts', function () {
     .pipe(gulp.dest(config.clientScripts.dest));
 });
 
-gulp.task('serverScripts', function () {
-  gulp.src(config.serverScripts.src)
-      .pipe(babel({ stage: 0 }))
-      .pipe(gulp.dest(config.serverScripts.dest));
-});
+gulp.task('serverScripts', release(config.serverScripts.src, config.serverScripts.dest));
+gulp.task('testScripts', release(config.testScripts.src, config.testScripts.dest));
+
+function release (src, dest) {
+  return function () {
+    gulp.src(src)
+        .pipe(babel({ stage: 0 }))
+        .pipe(gulp.dest(dest));
+  }
+}
 
 function bundle (src) {
   var b = browserify(src, {

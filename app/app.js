@@ -9,7 +9,7 @@ var wiserob = Wisdom(
   [
     'not to be'
   ]
-)
+);
 
 app.get('/random', function (req, res) {
   res.status(200).json('hello!');

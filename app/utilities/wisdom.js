@@ -4,6 +4,6 @@ function pick (array) {
 
 module.exports = function (left, right) {
   return function wisdom () {
-    return pick(left) + ' is ' + pick(right);
+    return `${pick(left)} is ${pick(right)}`;
   };
 };

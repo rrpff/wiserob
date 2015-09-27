@@ -1,14 +1,14 @@
-var express = require('express');
-var Wisdom = require('./lib/wisdom');
-var app = express();
+const express = require('express');
+const Wisdom = require('./lib/wisdom');
+const app = express();
 
-var wiserob = Wisdom(
+const wiserob = Wisdom(
   [
-    'To be'
+    'To be',
   ],
   [
-    'not to be'
-  ]
+    'not to be',
+  ],
 );
 
 app.get('/', function (req, res) {
@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 
 app.get('/random', function (req, res) {
   res.status(200).json({
-    quote: wiserob()
+    quote: wiserob(),
   });
 });
 

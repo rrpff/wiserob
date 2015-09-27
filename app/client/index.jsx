@@ -1,3 +1,5 @@
 const React = require('react');
 const Quote = require('../components/quote');
-const wisdom = require('../utilities/wisdom');
+const wiserob = require('../services/wiserob');
+
+React.render(<Quote quote={wiserob()} />, document.body);

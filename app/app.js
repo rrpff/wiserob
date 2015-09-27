@@ -11,6 +11,10 @@ var wiserob = Wisdom(
   ]
 );
 
+app.get('/', function () {
+  res.status(200).json(wiserob());
+});
+
 app.get('/random', function (req, res) {
   res.status(200).json(wiserob());
 });

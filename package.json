@@ -1,0 +1,22 @@
+{
+  "name": "wiserob",
+  "version": "0.0.0",
+  "description": "Philosophy for crazy people, written by machines.",
+  "engines": {
+    "node": "4.1.0"
+  },
+  "scripts": {
+    "start": "node app",
+    "test": "mocha"
+  },
+  "author": "Richard Foster <richard@rpf.me> (http://rpf.me)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3",
+    "supertest": "^1.1.0"
+  }
+}

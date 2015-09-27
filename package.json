@@ -6,7 +6,7 @@
     "node": "4.1.0"
   },
   "scripts": {
-    "start": "node app",
+    "start": "node dist",
     "test": "mocha dist/test/"
   },
   "author": "Richard Foster <richard@rpf.me> (http://rpf.me)",

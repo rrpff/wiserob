@@ -11,7 +11,7 @@ var wiserob = Wisdom(
   ]
 );
 
-app.get('/', function () {
+app.get('/', function (req, res) {
   res.status(200).json(wiserob());
 });
 

@@ -9,6 +9,7 @@ var config = {
   clientScripts: {
     src: 'app/client/index.jsx',
     dest: 'dist/static',
+    watch: 'app/**/*.{js,jsx}'
   },
   serverScripts: {
     src: ['app/index.js', 'app/**/*.{js,jsx}', '!app/{client,client/**}'],
@@ -28,7 +29,7 @@ gulp.task('default', Object.keys(config));
 
 gulp.task('watch', ['default'], function () {
   Object.keys(config).forEach(function (key) {
-    gulp.watch(config[key].src, [key]);
+    gulp.watch(config[key].watch || config[key].src, [key]);
   });
 });
 

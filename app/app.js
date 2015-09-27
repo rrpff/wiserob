@@ -16,7 +16,9 @@ app.get('/', function () {
 });
 
 app.get('/random', function (req, res) {
-  res.status(200).json(wiserob());
+  res.status(200).json({
+    quote: wiserob()
+  });
 });
 
 module.exports = app;

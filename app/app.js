@@ -12,7 +12,7 @@ var wiserob = Wisdom(
 );
 
 app.get('/random', function (req, res) {
-  res.status(200).json('hello!');
+  res.status(200).json(wiserob());
 });
 
 module.exports = app;

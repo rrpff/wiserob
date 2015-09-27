@@ -1,5 +1,13 @@
 const React = require('react');
-const Quote = require('../components/quote');
-const wiserob = require('../services/wiserob');
+const { Provider } = require('react-redux');
+const QuotePage = require('../components/quote-page');
+const store = require('./store');
 
-React.render(<Quote quote={wiserob()} />, document.body);
+let wrapper = document.getElementsByClassName('wrapper')[0];
+
+React.render(
+  <Provider store={store}>
+    {() => <QuotePage />}
+  </Provider>,
+  wrapper
+);

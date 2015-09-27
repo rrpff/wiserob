@@ -18,6 +18,10 @@ var config = {
     src: ['test/**/*.{js,jsx}'],
     dest: 'dist/test/'
   },
+  staticFiles: {
+    src: ['app/static/**/*'],
+    dest: 'dist/static/'
+  },
 };
 
 gulp.task('default', Object.keys(config));
@@ -36,6 +40,11 @@ gulp.task('clientScripts', function () {
 
 gulp.task('serverScripts', release(config.serverScripts.src, config.serverScripts.dest));
 gulp.task('testScripts', release(config.testScripts.src, config.testScripts.dest));
+
+gulp.task('staticFiles', function () {
+  gulp.src(config.staticFiles.src)
+      .pipe(gulp.dest(config.staticFiles.dest));
+});
 
 function release (src, dest) {
   return function () {

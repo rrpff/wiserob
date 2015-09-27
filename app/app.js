@@ -1,5 +1,5 @@
 const express = require('express');
-const Wisdom = require('./lib/wisdom');
+const Wisdom = require('./utilities/wisdom');
 const app = express();
 
 const wiserob = Wisdom(

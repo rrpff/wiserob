@@ -1,5 +1,5 @@
-var test = require('supertest');
-var app = require('../app/app');
+const test = require('supertest');
+const app = require('../app');
 
 describe('GET /random', function () {
   it('should return a random piece of wisdom', function (done) {

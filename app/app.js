@@ -1,15 +1,6 @@
 const express = require('express');
-const Wisdom = require('./utilities/wisdom');
 const app = express();
-
-const wiserob = Wisdom(
-  [
-    'To be',
-  ],
-  [
-    'not to be',
-  ],
-);
+const wiserob = require('./services/wiserob');
 
 app.get('/', function (req, res) {
   res.status(200).json(wiserob());

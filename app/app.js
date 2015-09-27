@@ -15,4 +15,8 @@ app.get('/random', function (req, res) {
   });
 });
 
+app.get('/random.txt', function (req, res) {
+  res.status(200).send(wiserob());
+});
+
 module.exports = app;

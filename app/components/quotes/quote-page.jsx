@@ -1,6 +1,5 @@
 const React = require('react');
 const QuoteList = require('./quote-list');
-const { connect } = require('react-redux');
 
 class QuotePage extends React.Component {
   render () {
@@ -12,4 +11,4 @@ class QuotePage extends React.Component {
   }
 }
 
-module.exports = connect(state => state)(QuotePage);
+module.exports = QuotePage;

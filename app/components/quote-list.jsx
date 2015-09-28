@@ -7,7 +7,7 @@ class QuoteList extends React.Component {
       <ul className="quotes">
         {this.props.quotes.map((quote) =>
           <Quote quote={quote} />
-        )}
+        ).reverse()}
       </ul>
     );
   }

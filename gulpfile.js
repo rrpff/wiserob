@@ -4,6 +4,7 @@ var source = require('vinyl-source-stream');
 var babel = require('gulp-babel');
 var babelify = require('babel');
 var reactify = require('reactify');
+var plumber = require('gulp-plumber');
 
 var config = {
   clientScripts: {
@@ -50,6 +51,7 @@ gulp.task('staticFiles', function () {
 function release (src, dest) {
   return function () {
     gulp.src(src)
+        .pipe(plumber())
         .pipe(babel({ stage: 0 }))
         .pipe(gulp.dest(dest));
   }

@@ -5,6 +5,8 @@ var babel = require('gulp-babel');
 var babelify = require('babel');
 var reactify = require('reactify');
 var plumber = require('gulp-plumber');
+var concat = require('gulp-concat');
+var stylus = require('gulp-stylus');
 
 var config = {
   clientScripts: {
@@ -23,6 +25,10 @@ var config = {
   staticFiles: {
     src: ['app/static/**/*'],
     dest: 'dist/static/'
+  },
+  styles: {
+    src: ['app/client/styles/**/*.styl'],
+    dest: 'dist/static'
   },
 };
 
@@ -46,6 +52,13 @@ gulp.task('testScripts', release(config.testScripts.src, config.testScripts.dest
 gulp.task('staticFiles', function () {
   gulp.src(config.staticFiles.src)
       .pipe(gulp.dest(config.staticFiles.dest));
+});
+
+gulp.task('styles', function () {
+  gulp.src(config.styles.src)
+      .pipe(stylus())
+      .pipe(concat('app.css'))
+      .pipe(gulp.dest(config.styles.dest));
 });
 
 function release (src, dest) {

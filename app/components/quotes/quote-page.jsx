@@ -1,6 +1,5 @@
 const React = require('react');
 const QuoteList = require('./quote-list');
-const { addQuote } = require('../actions/quotes');
 const { connect } = require('react-redux');
 
 class QuotePage extends React.Component {

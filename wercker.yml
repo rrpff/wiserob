@@ -22,11 +22,6 @@ build:
     - npm-install
     - hgen/gulp
     - npm-test
-    - script:
-        name: print versions
-        code: |
-          echo "node version $(node -v)"
-          echo "npm version $(npm -v)"
 
 deploy:
   steps:

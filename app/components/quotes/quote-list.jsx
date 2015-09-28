@@ -5,8 +5,8 @@ class QuoteList extends React.Component {
   render () {
     return (
       <ul className="quotes">
-        {this.props.quotes.map((quote) =>
-          <Quote quote={quote} />
+        {this.props.quotes.map((quote, index) =>
+          <Quote quote={quote} key={index} />
         ).reverse()}
       </ul>
     );

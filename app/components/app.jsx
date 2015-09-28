@@ -6,7 +6,10 @@ const { addQuote } = require('../actions/quotes');
 class App extends React.Component {
   render () {
     return (
-      <div className="wrapper" onClick={e => this.handleClick(e)}>
+      <div className="wrapper"
+           tabIndex="0"
+           onClick={e => this.handleClick(e)}
+           onKeyDown={e => this.handleKey(e)}>
         <QuotePage quotes={this.props.quotes} />
       </div>
     );
@@ -15,6 +18,16 @@ class App extends React.Component {
   handleClick (e) {
     if (this.props.onClick) this.props.onClick();
     this.props.dispatch(addQuote());
+  }
+
+  handleKey (e) {
+    let validKeys = [13, 32];
+    let validKeyPress = validKeys.indexOf(e.keyCode) > -1;
+
+    if (validKeyPress) {
+      e.preventDefault();
+      this.props.dispatch(addQuote());
+    }
   }
 }
 

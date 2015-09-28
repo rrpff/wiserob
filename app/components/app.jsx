@@ -5,7 +5,7 @@ const { connect } = require('react-redux');
 class App extends React.Component {
   render () {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         <QuotePage quotes={this.props.quotes} />
       </div>
     );

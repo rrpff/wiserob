@@ -4,6 +4,10 @@ const { connect } = require('react-redux');
 const { addQuote } = require('../actions/quotes');
 
 class App extends React.Component {
+  componentDidMount () {
+    this.props.dispatch(addQuote());
+  }
+
   render () {
     return (
       <div className="wrapper"

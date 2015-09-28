@@ -1,13 +1,16 @@
-const React = require('react');
+const React = require('react/addons');
+const CSSTransitionGroup = React.addons.CSSTransitionGroup;
 const Quote = require('./quote');
 
 class QuoteList extends React.Component {
   render () {
     return (
       <ul className="quotes">
-        {this.props.quotes.map((quote, index) =>
-          <Quote quote={quote} key={index} />
-        ).reverse()}
+        <CSSTransitionGroup transitionName="quote">
+          {this.props.quotes.map((quote, index) =>
+            <Quote quote={quote} key={index} />
+          ).reverse()}
+        </CSSTransitionGroup>
       </ul>
     );
   }

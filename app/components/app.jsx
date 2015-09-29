@@ -1,11 +1,11 @@
 const React = require('react');
 const QuotePage = require('./quotes/quote-page');
 const { connect } = require('react-redux');
-const { addQuote } = require('../actions/quotes');
+const { replaceQuote } = require('../actions/quotes');
 
 class App extends React.Component {
   componentDidMount () {
-    this.props.dispatch(addQuote());
+    this.props.dispatch(replaceQuote());
   }
 
   render () {
@@ -14,14 +14,14 @@ class App extends React.Component {
            tabIndex="0"
            onClick={e => this.handleClick(e)}
            onKeyDown={e => this.handleKey(e)}>
-        <QuotePage quotes={this.props.quotes} />
+        <QuotePage quote={this.props.quotes} />
       </div>
     );
   }
 
   handleClick (e) {
     if (this.props.onClick) this.props.onClick();
-    this.props.dispatch(addQuote());
+    this.props.dispatch(replaceQuote());
   }
 
   handleKey (e) {
@@ -30,7 +30,7 @@ class App extends React.Component {
 
     if (validKeyPress) {
       e.preventDefault();
-      this.props.dispatch(addQuote());
+      this.props.dispatch(replaceQuote());
     }
   }
 }

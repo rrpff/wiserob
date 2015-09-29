@@ -1,10 +1,10 @@
 const wiserob = require('../services/wiserob');
 
-function addQuote () {
+function replaceQuote () {
   return {
-    type: 'ADD_QUOTE',
+    type: 'REPLACE_QUOTE',
     quote: wiserob(),
   };
 };
 
-exports.addQuote = addQuote;
+exports.replaceQuote = replaceQuote;

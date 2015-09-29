@@ -1,7 +1,7 @@
-function quotes (state = [], action) {
+function quotes (state = '', action) {
   switch (action.type) {
-  case 'ADD_QUOTE':
-    return [...state, action.quote];
+  case 'REPLACE_QUOTE':
+    return action.quote;
   default:
     return state;
   }

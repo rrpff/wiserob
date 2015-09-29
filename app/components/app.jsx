@@ -14,7 +14,9 @@ class App extends React.Component {
            tabIndex="0"
            onClick={e => this.handleClick(e)}
            onKeyDown={e => this.handleKey(e)}>
-        <QuotePage quote={this.props.quotes} />
+        <div className="centerWrapper">
+          <QuotePage quote={this.props.quotes} />
+        </div>
       </div>
     );
   }

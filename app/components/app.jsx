@@ -12,18 +12,12 @@ class App extends React.Component {
     return (
       <div className="wrapper"
            tabIndex="0"
-           onClick={e => this.handleClick(e)}
            onKeyDown={e => this.handleKey(e)}>
         <div className="centerWrapper">
           <QuotePage quote={this.props.quotes} />
         </div>
       </div>
     );
-  }
-
-  handleClick (e) {
-    if (this.props.onClick) this.props.onClick();
-    this.props.dispatch(replaceQuote());
   }
 
   handleKey (e) {

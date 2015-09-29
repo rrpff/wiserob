@@ -1,18 +1,19 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 var babel = require('gulp-babel');
-var babelify = require('babel');
+var babelify = require('babelify');
 var reactify = require('reactify');
 var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
 var stylus = require('gulp-stylus');
+var livereactload = require('livereactload');
 
 var config = {
   clientScripts: {
     src: 'app/client/index.jsx',
-    dest: 'dist/static',
-    watch: 'app/**/*.{js,jsx}'
+    dest: 'dist/static'
   },
   serverScripts: {
     src: ['app/index.js', 'app/**/*.{js,jsx}', '!app/{client,client/**}'],
@@ -35,9 +36,12 @@ var config = {
 gulp.task('default', Object.keys(config));
 
 gulp.task('watch', ['default'], function () {
-  Object.keys(config).forEach(function (key) {
-    gulp.watch(config[key].watch || config[key].src, [key]);
-  });
+  gulp.watch(config.serverScripts.src, ['serverScripts']);
+  gulp.watch(config.testScripts.src, ['testScripts']);
+  gulp.watch(config.staticFiles.src, ['staticFiles']);
+  gulp.watch(config.styles.src, ['styles']);
+
+  hotBundle(config.clientScripts.src);
 });
 
 gulp.task('clientScripts', function () {
@@ -71,12 +75,36 @@ function release (src, dest) {
 }
 
 function bundle (src) {
-  var b = browserify(src, {
+  var bundler = browserify({
+    entries: src,
     extensions: ['.jsx'],
+    transform: [babelify],
+    fullPaths: false
   });
 
-  b.transform('babelify', { stage: 0 });
-  b.transform('reactify');
+  return bundler.bundle();
+}
 
-  return b.bundle();
+function hotBundle (src) {
+  function rebundle () {
+    watcher.bundle()
+           .pipe(source('app.js'))
+           .pipe(gulp.dest(config.clientScripts.dest));
+  }
+
+  var bundler = browserify({
+    entries: src,
+    extensions: ['.jsx'],
+    transform: [babelify],
+    plugin: [livereactload],
+    cache: {},
+    packageCache: {},
+    fullPaths: true
+  });
+
+  var watcher = watchify(bundler);
+  rebundle();
+
+  return watcher.on('error', console.warn.bind(console))
+                .on('update', rebundle);
 }

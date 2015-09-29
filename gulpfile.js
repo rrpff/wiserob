@@ -35,7 +35,7 @@ var config = {
 
 gulp.task('default', Object.keys(config));
 
-gulp.task('watch', ['default'], function () {
+gulp.task('watch', ['serverScripts', 'testScripts', 'staticFiles', 'styles'], function () {
   gulp.watch(config.serverScripts.src, ['serverScripts']);
   gulp.watch(config.testScripts.src, ['testScripts']);
   gulp.watch(config.staticFiles.src, ['staticFiles']);

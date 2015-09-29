@@ -2,7 +2,7 @@ const wiserob = require('../services/wiserob');
 
 function replaceQuote () {
   return {
-    type: 'REPLACE_QUOTE',
+    type: 'QUOTE_REPLACE',
     quote: wiserob(),
   };
 };

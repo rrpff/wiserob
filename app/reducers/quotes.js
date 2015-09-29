@@ -1,6 +1,6 @@
 function quotes (state = '', action) {
   switch (action.type) {
-  case 'REPLACE_QUOTE':
+  case 'QUOTE_REPLACE':
     return action.quote;
   default:
     return state;
